@@ -2,7 +2,7 @@ import datetime
 import time
 
 def parse_date(date):
-    if isinstance(date, basestring):
+    if isinstance(date, str):
         date = int(date)
     gmtime = time.gmtime(date)
     return datetime.date(gmtime.tm_year, gmtime.tm_mon, gmtime.tm_mday)

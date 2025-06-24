@@ -9,11 +9,8 @@ except ImportError:
         raise ImportError("You must have either Python 2.5 or cElementTree " +
             "installed before you can use the etree NZB parser.")
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
+from io import BytesIO
 
 class ETreeNZBParser(BaseETreeNZBParser):
     def get_etree_iter(self, xml, et=etree):
-        return iter(et.iterparse(StringIO(xml), events=("start", "end")))
+        return iter(et.iterparse(BytesIO(xml.encode('utf-8')), events=("start", "end")))
