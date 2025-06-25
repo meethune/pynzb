@@ -118,7 +118,7 @@ In this example, we will grab an Ubuntu NZB and parse the file, printing out
 some information about each file and its segments::
 
     from pynzb import nzb_parser
-    from urllib2 import urlopen
+    from urllib.request import urlopen
 
     # Grab a sample Ubuntu NZB
     ubuntu_nzb = urlopen('http://media.eflorenzano.com/misc/sample-ubuntu-nzb.nzb').read()
@@ -128,8 +128,8 @@ some information about each file and its segments::
 
     # Print out each file's subject and the first two segment message ids
     for nzb_file in files:
-        print nzb_file.subject
+        print(nzb_file.subject)
         for segment in nzb_file.segments[:2]:
-            print '    ' + segment.message_id
+            print('    ' + segment.message_id)
         if len(nzb_file.segments) > 2:
-            print '    ...'
+            print('    ...')

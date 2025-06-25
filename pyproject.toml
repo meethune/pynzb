@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pynzb"
+version = "0.2.0"
+authors = [
+  { name="Eric Florenzano", email="floguy@gmail.com" },
+]
+description = "pynzb is a unified API for parsing NZB files, with several concrete implementations included"
+readme = "README.rst"
+requires-python = ">=3.6"
+license = { text = "BSD-3-Clause" }
+keywords = ["nzb", "parser", "xml"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ericflo/pynzb" 
