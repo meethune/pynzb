@@ -8,6 +8,9 @@ version = "0.2.0"
 authors = [
   { name="Eric Florenzano", email="floguy@gmail.com" },
 ]
+maintainers = [
+  { name="Meethune Bhowmick", email="meethune@gmail.com" },
+]
 description = "pynzb is a unified API for parsing NZB files, with several concrete implementations included"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -23,5 +26,7 @@ classifiers = [
 lxml = ["lxml"]
 
 [project.urls]
-"Homepage" = "https://github.com/ericflo/pynzb"
-"Repository" = "https://github.com/ericflo/pynzb" 
+"Homepage" = "https://github.com/meethune/pynzb/tree/python3"
+"Repository" = "https://github.com/meethune/pynzb"
+"Bug Reports" = "https://github.com/meethune/pynzb/issues"
+"Original Repository" = "https://github.com/ericflo/pynzb" 
