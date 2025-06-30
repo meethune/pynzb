@@ -42,13 +42,13 @@ def main():
 
     try:
         # Read the file as bytes first to handle different possible text encodings
-        # in the XML file.
+        # in the NZB file.
         with open(file_path, 'rb') as f:
             nzb_bytes = f.read()
 
         # The pynzb parsers currently expect a string. We'll try decoding as UTF-8,
         # which is common, and fall back to latin-1 (which covers iso-8859-1)
-        # if that fails. A more robust solution would inspect the XML declaration.
+        # if that fails. A more robust solution would inspect the NZB declaration.
         try:
             nzb_content_str = nzb_bytes.decode('utf-8')
         except UnicodeDecodeError:

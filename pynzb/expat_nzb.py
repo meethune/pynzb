@@ -28,11 +28,11 @@ class ExpatNZBParser(BaseNZBParser):
     def char_data(self, data):
         self.current_data = data
     
-    def parse(self, xml):
+    def parse(self, nzb):
         self.files = []
         parser = expat.ParserCreate()
         parser.StartElementHandler = self.start_element
         parser.EndElementHandler = self.end_element
         parser.CharacterDataHandler = self.char_data
-        parser.Parse(xml)
+        parser.Parse(nzb)
         return self.files

@@ -40,17 +40,17 @@ class NZBFile:
 
 
 class BaseNZBParser:
-    def parse(self, xml):
+    def parse(self, nzb):
         raise NotImplementedError
 
 
 
 class BaseETreeNZBParser(BaseNZBParser):
-    def get_etree_iter(self, xml, et=None):
+    def get_etree_iter(self, nzb, et=None):
         raise NotImplementedError
     
-    def parse(self, xml):
-        context = self.get_etree_iter(xml)
+    def parse(self, nzb):
+        context = self.get_etree_iter(nzb)
         files, current_file, current_segment = [], None, None
         
         for event, elem in context:
