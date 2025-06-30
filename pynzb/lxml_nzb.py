@@ -1,6 +1,9 @@
-from lxml import etree
-from io import BytesIO
+try:
+    from lxml import etree  # type: ignore
+except ImportError:
+    raise ImportError("lxml is not installed. Install it with: pip install pynzb[lxml]")
 
+from io import BytesIO
 from pynzb.base import BaseETreeNZBParser
 
 class LXMLNZBParser(BaseETreeNZBParser):

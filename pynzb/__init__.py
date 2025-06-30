@@ -1,18 +1,11 @@
 from pynzb.expat_nzb import ExpatNZBParser
+from pynzb.etree_nzb import ETreeNZBParser
 
-try:
-    from pynzb.etree_nzb import ETreeNZBParser
-except ImportError:
-    ETreeNZBParser = None
+# Try to import lxml parser, but don't fail if it's not available
 try:
     from pynzb.lxml_nzb import LXMLNZBParser
-except ImportError:
-    LXMLNZBParser = None
-
-# Set up the parser based on speed precedence
-if LXMLNZBParser is not None:
+    # lxml is fastest when available
     nzb_parser = LXMLNZBParser()
-elif ETreeNZBParser is not None:
+except ImportError:
+    # Fall back to built-in ElementTree (still quite fast)
     nzb_parser = ETreeNZBParser()
-else:
-    nzb_parser = ExpatNZBParser()

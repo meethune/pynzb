@@ -16,7 +16,12 @@ keywords = ["nzb", "parser", "xml"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: BSD License",
 ]
 
+[project.optional-dependencies]
+lxml = ["lxml"]
+
 [project.urls]
-"Homepage" = "https://github.com/ericflo/pynzb" 
+"Homepage" = "https://github.com/ericflo/pynzb"
+"Repository" = "https://github.com/ericflo/pynzb" 
