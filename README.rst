@@ -7,21 +7,22 @@ NZB files.  This project is an attempt to consolidate those many one-off NZB
 parsers into one simple interface.
 
 This package includes three implementations: one based on expat, another based
-on ElementTree, and a final implementation based on lxml.  The order in which
-they were listed is in order of compatibility.  The expat version should work on
-all versions of Python > 2.0, the lxml one will work on all versions > 2.5, and
-lxml will only work if you have lxml installed.
+on ElementTree, and a final implementation based on lxml.  The fastest available
+parser is automatically selected at import time.
 
+Installation
+============
 
-A Note on Installing lxml
--------------------------
+Basic installation::
 
-While lxml is not a requirement, I have had a hard time installing lxml in the
-past.  I have found this set of commands to work perfectly::
+    pip install pynzb
 
-    STATIC_DEPS=true easy_install 'lxml>=2.2beta4'
-    STATIC_DEPS=true sudo easy_install 'lxml>=2.2beta4'
+For better performance with large NZB files, install with lxml support::
 
+    pip install pynzb[lxml]
+
+The library will automatically use lxml when available, but falls back to the
+built-in ElementTree parser if lxml is not installed.
 
 API Documentation
 -----------------
@@ -44,7 +45,7 @@ Other Parser Locations
     Available in the ``pynzb.etree_nzb`` namespace.
 
 ``LXMLNZBParser``:
-    Available in the ``pynzb.lxml_nzb`` namespace.
+    Available in the ``pynzb.lxml_nzb`` namespace (requires lxml).
 
 
 Using the NZB Parser
