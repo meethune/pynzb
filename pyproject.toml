@@ -9,7 +9,7 @@ authors = [
   { name="Eric Florenzano", email="floguy@gmail.com" },
 ]
 description = "pynzb is a unified API for parsing NZB files, with several concrete implementations included"
-readme = "README.rst"
+readme = "README.md"
 requires-python = ">=3.6"
 license = { text = "BSD-3-Clause" }
 keywords = ["nzb", "parser", "xml"]
