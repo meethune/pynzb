@@ -8,7 +8,7 @@ def parse_date(date):
     return datetime.date(gmtime.tm_year, gmtime.tm_mon, gmtime.tm_mday)
 
 
-class NZBSegment(object):
+class NZBSegment:
     def __init__(self, bytes, number, message_id=None):
         self.bytes = int(bytes)
         self.number = int(number)
@@ -21,7 +21,7 @@ class NZBSegment(object):
 
 
 
-class NZBFile(object):
+class NZBFile:
     def __init__(self, poster, date, subject, groups=None, segments=None):
         self.poster = poster
         self.date = parse_date(date)
@@ -39,7 +39,7 @@ class NZBFile(object):
 
 
 
-class BaseNZBParser(object):
+class BaseNZBParser:
     def parse(self, xml):
         raise NotImplementedError
 
