@@ -69,16 +69,18 @@ class BaseETreeNZBParser(BaseNZBParser):
                     files.append(current_file)
                 
                 elif elem.tag == "{http://www.newzbin.com/DTD/2003/nzb}group":
-                    current_file.add_group(elem.text)
+                    if current_file:
+                        current_file.add_group(elem.text)
                 
                 elif elem.tag == "{http://www.newzbin.com/DTD/2003/nzb}segment":
-                    current_file.add_segment(
-                        NZBSegment(
-                            bytes = elem.attrib['bytes'],
-                            number = elem.attrib['number'],
-                            message_id = elem.text
+                    if current_file:
+                        current_file.add_segment(
+                            NZBSegment(
+                                bytes = elem.attrib['bytes'],
+                                number = elem.attrib['number'],
+                                message_id = elem.text
+                            )
                         )
-                    )
                 # Clear the element, we don't need it any more.
                 elem.clear()
         return files

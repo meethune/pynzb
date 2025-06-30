@@ -1,12 +1,7 @@
-from pynzb.base import BaseETreeNZBParser, NZBFile, NZBSegment
-
-try:
-    from lxml import etree
-except ImportError:
-    raise ImportError("You must have lxml installed before you can use the " +
-        "lxml NZB parser.")
-
+from lxml import etree
 from io import BytesIO
+
+from pynzb.base import BaseETreeNZBParser
 
 class LXMLNZBParser(BaseETreeNZBParser):
     def get_etree_iter(self, xml, et=etree):
