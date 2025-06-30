@@ -1,9 +1,11 @@
-from pynzb.expat_nzb import ExpatNZBParser
+# flake8: noqa: F401
 from pynzb.etree_nzb import ETreeNZBParser
+from pynzb.expat_nzb import ExpatNZBParser
 
 # Try to import lxml parser, but don't fail if it's not available
 try:
     from pynzb.lxml_nzb import LXMLNZBParser
+
     # lxml is fastest when available
     nzb_parser = LXMLNZBParser()
 except ImportError:

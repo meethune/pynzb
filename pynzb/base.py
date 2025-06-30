@@ -1,6 +1,7 @@
 import datetime
 import time
 
+
 def parse_date(date):
     if isinstance(date, str):
         date = int(date)
@@ -14,11 +15,9 @@ class NZBSegment:
         self.number = int(number)
         if message_id:
             self.message_id = message_id
-    
-    
+
     def set_message_id(self, message_id):
         self.message_id = message_id
-
 
 
 class NZBFile:
@@ -28,15 +27,12 @@ class NZBFile:
         self.subject = subject
         self.groups = groups or []
         self.segments = segments or []
-    
-    
+
     def add_group(self, group):
         self.groups.append(group)
-    
-    
+
     def add_segment(self, segment):
         self.segments.append(segment)
-
 
 
 class BaseNZBParser:
@@ -44,41 +40,40 @@ class BaseNZBParser:
         raise NotImplementedError
 
 
-
 class BaseETreeNZBParser(BaseNZBParser):
     def get_etree_iter(self, nzb, et=None):
         raise NotImplementedError
-    
+
     def parse(self, nzb):
         context = self.get_etree_iter(nzb)
-        files, current_file, current_segment = [], None, None
-        
+        files, current_file = [], None
+
         for event, elem in context:
             if event == "start":
                 # If it's an NZBFile, create an object so that we can add the
                 # appropriate stuff to it.
                 if elem.tag == "{http://www.newzbin.com/DTD/2003/nzb}file":
                     current_file = NZBFile(
-                        poster = elem.attrib['poster'],
-                        date = elem.attrib['date'],
-                        subject = elem.attrib['subject']
+                        poster=elem.attrib["poster"],
+                        date=elem.attrib["date"],
+                        subject=elem.attrib["subject"],
                     )
-            
+
             elif event == "end":
                 if elem.tag == "{http://www.newzbin.com/DTD/2003/nzb}file":
                     files.append(current_file)
-                
+
                 elif elem.tag == "{http://www.newzbin.com/DTD/2003/nzb}group":
                     if current_file:
                         current_file.add_group(elem.text)
-                
+
                 elif elem.tag == "{http://www.newzbin.com/DTD/2003/nzb}segment":
                     if current_file:
                         current_file.add_segment(
                             NZBSegment(
-                                bytes = elem.attrib['bytes'],
-                                number = elem.attrib['number'],
-                                message_id = elem.text
+                                bytes=elem.attrib["bytes"],
+                                number=elem.attrib["number"],
+                                message_id=elem.text,
                             )
                         )
                 # Clear the element, we don't need it any more.
