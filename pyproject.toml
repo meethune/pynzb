@@ -10,9 +10,9 @@ authors = [
 ]
 description = "pynzb is a unified API for parsing NZB files, with several concrete implementations included"
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 license = { text = "BSD-3-Clause" }
-keywords = ["nzb", "parser", "xml"]
+keywords = ["nzb", "parser", "xml", "usenet"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Software Development :: Libraries :: Python Modules",
