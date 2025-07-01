@@ -49,4 +49,4 @@ jobs:
     
     - name: Test CLI
       run: |
-        python example.py --help 
+        python example.py test_download_100MB.nzb 
