@@ -1,4 +1,3 @@
-# flake8: noqa: F401
 from pynzb.base import BaseNZBParser
 from pynzb.etree_nzb import ETreeNZBParser
 
