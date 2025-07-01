@@ -43,9 +43,9 @@ jobs:
       run: |
         bandit -r pynzb/ -ll --skip B101
     
-    - name: Test with pytest
+    - name: Test with pytest and coverage
       run: |
-        pytest pynzb/tests.py -v
+        pytest pynzb/tests.py -v --cov=pynzb --cov-report=term-missing
     
     - name: Test CLI
       run: |

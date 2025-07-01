@@ -24,10 +24,23 @@ classifiers = [
 
 [project.optional-dependencies]
 lxml = ["lxml"]
-dev = ["flake8", "black", "isort", "pytest", "bandit[toml]"]
+dev = ["flake8", "black", "isort", "pytest", "pytest-cov", "bandit[toml]"]
 
 [project.urls]
 "Homepage" = "https://github.com/meethune/pynzb/tree/python3"
 "Repository" = "https://github.com/meethune/pynzb"
 "Bug Reports" = "https://github.com/meethune/pynzb/issues"
-"Original Repository" = "https://github.com/ericflo/pynzb" 
+"Original Repository" = "https://github.com/ericflo/pynzb"
+
+[tool.coverage.run]
+source = ["pynzb"]
+omit = ["*/tests.py", "*/test_*.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]
+show_missing = true
