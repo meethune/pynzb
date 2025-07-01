@@ -43,6 +43,10 @@ jobs:
       run: |
         bandit -r pynzb/ -ll --skip B101
     
+    - name: Type check with mypy
+      run: |
+        mypy pynzb/ --ignore-missing-imports --show-error-codes
+    
     - name: Test with pytest and coverage
       run: |
         pytest pynzb/tests.py -v --cov=pynzb --cov-report=term-missing
