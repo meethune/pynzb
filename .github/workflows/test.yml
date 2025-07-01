@@ -39,6 +39,10 @@ jobs:
       run: |
         isort --check-only pynzb/
     
+    - name: Security scan with bandit
+      run: |
+        bandit -r pynzb/ -ll --skip B101
+    
     - name: Test with pytest
       run: |
         pytest pynzb/tests.py -v

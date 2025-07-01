@@ -19,7 +19,7 @@ This document outlines the key considerations and tasks for preparing the first 
 
 - [x] **All tests passing**: Verified
 - [ ] **Code coverage**: Consider adding coverage reporting
-- [ ] **Security scan**: Run `bandit` or similar for security issues
+- [x] **Security scan**: Run `bandit` or similar for security issues
 - [ ] **Dependency audit**: Check for vulnerable dependencies
 
 ## 🚢 Release Process

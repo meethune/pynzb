@@ -24,7 +24,7 @@ classifiers = [
 
 [project.optional-dependencies]
 lxml = ["lxml"]
-dev = ["flake8", "black", "isort", "pytest"]
+dev = ["flake8", "black", "isort", "pytest", "bandit[toml]"]
 
 [project.urls]
 "Homepage" = "https://github.com/meethune/pynzb/tree/python3"
