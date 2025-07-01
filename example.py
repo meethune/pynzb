@@ -9,18 +9,21 @@ NZB file and extract information about the files it contains.
 
 import argparse
 import os
+
 from pynzb import nzb_parser
+
 
 def format_size(size_in_bytes):
     """Converts a size in bytes to a human-readable string."""
     if size_in_bytes is None:
         return "0 B"
     # Define the units and iterate to find the correct one
-    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+    for unit in ["B", "KB", "MB", "GB", "TB"]:
         if size_in_bytes < 1024.0:
             break
         size_in_bytes /= 1024.0
     return f"{size_in_bytes:3.2f} {unit}"
+
 
 def main():
     """
@@ -28,7 +31,7 @@ def main():
     """
     parser = argparse.ArgumentParser(
         description="Parse an NZB file and display file and size information.",
-        epilog="Example: python example.py my_ubuntu_download.nzb"
+        epilog="Example: python example.py my_ubuntu_download.nzb",
     )
     parser.add_argument("nzb_file", help="The path to the NZB file to parse.")
     args = parser.parse_args()
@@ -43,20 +46,20 @@ def main():
     try:
         # Read the file as bytes first to handle different possible text encodings
         # in the NZB file.
-        with open(file_path, 'rb') as f:
+        with open(file_path, "rb") as f:
             nzb_bytes = f.read()
 
         # The pynzb parsers currently expect a string. We'll try decoding as UTF-8,
         # which is common, and fall back to latin-1 (which covers iso-8859-1)
         # if that fails. A more robust solution would inspect the NZB declaration.
         try:
-            nzb_content_str = nzb_bytes.decode('utf-8')
+            nzb_content_str = nzb_bytes.decode("utf-8")
         except UnicodeDecodeError:
             print("Warning: Could not decode as UTF-8, falling back to latin-1.")
-            nzb_content_str = nzb_bytes.decode('latin-1')
+            nzb_content_str = nzb_bytes.decode("latin-1")
 
         # Use the default pynzb parser to process the NZB content.
-        # This will automatically select the fastest available parser (lxml, etree, or expat).
+        # This will automatically select the fastest available parser (lxml or etree).
         files = nzb_parser.parse(nzb_content_str)
 
         if not files:
@@ -78,5 +81,6 @@ def main():
         print(f"\nAn error occurred while parsing the file: {e}")
         print("This may not be a valid NZB file.")
 
+
 if __name__ == "__main__":
-    main() 
+    main()

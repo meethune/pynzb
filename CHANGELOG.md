@@ -23,11 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modernized packaging (removed `setup.cfg`, simplified `setup.py`)
 
 ### Fixed
-- Bug in `ExpatNZBParser.end_element()` method call
+- Bug in parser method calls
 - Added missing null checks for `current_file` in parsing logic
 - Encoding issues with XML/NZB file parsing
 
 ### Removed
+- **BREAKING**: `ExpatNZBParser` - removed as ElementTree is always available in Python 3
 - Python 2 compatibility code (`basestring`, `StringIO`, etc.)
 - Redundant packaging configuration files
 

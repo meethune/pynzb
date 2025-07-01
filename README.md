@@ -7,7 +7,7 @@ Since NZB is XML-based, it's relatively easy to build one-off parsers to parse
 NZB files. This project is an attempt to consolidate those many one-off NZB
 parsers into one simple interface.
 
-This package includes three implementations: one based on expat, another based
+This package includes two implementations: one based
 on ElementTree, and a final implementation based on lxml. The fastest available
 parser is automatically selected at import time.
 
@@ -63,7 +63,7 @@ of the fastest available parser that your system can support.
 
 ### Other Parser Locations
 
-- **`ExpatNZBParser`**: Available in the `pynzb.expat_nzb` namespace.
+
 - **`ETreeNZBParser`**: Available in the `pynzb.etree_nzb` namespace.
 - **`LXMLNZBParser`**: Available in the `pynzb.lxml_nzb` namespace (requires lxml).
 

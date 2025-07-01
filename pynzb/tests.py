@@ -2,7 +2,6 @@ import datetime
 
 from pynzb.base import parse_date
 from pynzb.etree_nzb import ETreeNZBParser
-from pynzb.expat_nzb import ExpatNZBParser
 from pynzb.lxml_nzb import LXMLNZBParser
 
 SAMPLE_NZB = """<?xml version="1.0" encoding="iso-8859-1" ?>
@@ -41,12 +40,6 @@ def assert_sample_nzb(f):
     assert second_segment.bytes == 4501
     assert second_segment.number == 2
     assert second_segment.message_id == "987654321fedbca@news.newzbin.com"
-
-
-def test_expat():
-    parser = ExpatNZBParser()
-    files = parser.parse(SAMPLE_NZB)
-    assert_sample_nzb(files[0])
 
 
 def test_etree():
